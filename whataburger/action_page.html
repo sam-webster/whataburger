@@ -1,0 +1,52 @@
+<html>
+<head></head>
+
+<body>
+<script>
+/*	var fname = <?php $_POST["fname"] ?>;
+	var sname = <?php $_POST["fname"] ?>;
+	var uid = <?php $_POST["uid"] ?>;
+	var dob = <?php $_POST["dob"] ?>;
+*/	
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+        StoreInXML(this);
+		}
+	};
+	xhttp.open("GET", "students.xml", true);
+	xhttp.send();
+	
+function StoreInXML(xml){
+	var xmlDoc = xml.responseXML;
+    var x, y, i, newEle, fnEle, snEle, uidEle, dobEle, fnText, snText, uidText, dobText, newText;
+
+    // add an edition element
+    newEle = xmlDoc.createElement("learner");
+	
+	fnEle = xmlDoc.createElement("firstname");
+	snEle = xmlDoc.createElement("surname");
+	uidEle = xmlDoc.createElement("userID");
+	dobEle = xmlDoc.createElement("dateofbirth");
+	
+    fnText = xmlDoc.createTextNode("first");
+	snText = xmlDoc.createTextNode("first");
+	uidText = xmlDoc.createTextNode("first");
+	dobText = xmlDoc.createTextNode("first");
+	
+	fnEle.appendChild(fnText);
+	snEle.appendChild(snText);
+	uidEle.appendChild(uidText);
+	dobEle.appendChild(dobText);
+	
+	
+    newEle.appendChild(fnEle);
+	newEle.appendChild(snEle);
+	newEle.appendChild(uidEle);
+	newEle.appendChild(dobEle);
+	
+    x = xmlDoc.getElementsByTagName("students")[0];
+    x.appendChild(newEle);
+}
+</script>
+</body>

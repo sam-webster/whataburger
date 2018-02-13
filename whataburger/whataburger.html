@@ -1,0 +1,29 @@
+<html>
+<head>
+<script>
+function ValidateForm(){
+	var fname = document.forms["myForm"]["fname"].value;
+	var sname = document.forms["myForm"]["sname"].value;
+	var uid = document.forms["myForm"]["uid"].value;
+	var dob = document.forms["myForm"]["dob"].value;
+	var maxDob = new Date(2003, 1, 1);
+    if (fname == "" || sname == "") {
+        alert("Name must be filled out");
+        return false;
+    }
+	/*if (dob > maxDob){
+		alert("Date of birth invalid");
+	}*/
+}
+</script>
+</head>
+<body>
+<form name="myForm" action="action_page.html" onsubmit="return ValidateForm()" method="post">
+First Name: <input type="text" name="fname"><br>
+Surname: <input type="text" name="sname"><br>
+User ID: <input type="text" name="uid"><br><!--May have to pull this from somewhere-->
+Date of Birth: <input type="date" name="dob"><br>
+<input type="submit" value="Submit">
+</form>
+</body>
+</html>
